@@ -1,3 +1,8 @@
+<?php
+    include './product.php';
+    include './food.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
