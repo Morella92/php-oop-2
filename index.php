@@ -1,6 +1,7 @@
 <?php
     include './product.php';
-    include './food.php'
+    include './food.php';
+    include './toy.php'
 ?>
 
 <!DOCTYPE html>
