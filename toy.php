@@ -9,6 +9,18 @@
             $this->material = $_material;
             $this->year = $_year;
         }
+
+        public function getMaterial() {
+        return $this->material;
+        }
+        
+        public function getYear() {
+        return $this->year;
+        }
+        
+        public function getDescription() {
+        return parent::getDescription() . " Questo giocattolo è fatto di " . $this->material . " ed è stato prodotto nel " . $this->year . ".";
+        }
     }
     
 ?>

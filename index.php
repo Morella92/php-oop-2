@@ -6,21 +6,22 @@
     include './category.php';
 
     // Istanze della classe Product
-    $product1 = new Product("Dog Leash", 5, "Accessories");
-    $product2 = new Product("Dog Coat", 20, "Abbigliamento");
+    $product1 = new Product("Guinzaglio per cani", 5, "Accessori");
+    $product2 = new Product("Cappottino per cani", 20, "Abbigliamento");
 
     // Istanze della classe Food
-    $food1 = new Food("Croquettes", 15, "Pet's Food", 2, "Dry", "Adult");
-    $food2 = new Food("Cat's Food", 10, "Pet's Food", 1, "Wet", "Puppy");
+    $food1 = new Food("Crocchette", 15, "Cibo per cani", 2, "Secco", "Adulto");
+    $food2 = new Food("Umido per gatti", 10, "Cibo per gatti", 1, "Umido", "Puppy");
 
     // Istanze della classe Toy
-    $toy1 = new Toy("Dog's Ball", 7, "Toys", "Plastica", "Adult");
-    $toy2 = new Toy("Mouse", 16, "Toys", "Peluche", "Puppy");
+    $toy1 = new Toy("Pallina per cani", 7, "Giochi", "Plastica", "Adulto");
+    $toy2 = new Toy("Topolino", 16, "Giochi", "Peluche", "Puppy");
 
     // Istanze della classe Bed
-    $bed1 = new Bed("Dog Pillow", 30, "Pet's Bed", "50x70");
-    $bed2 = new Bed("Cat House", 40, "Pet's Bed", "70x90");
+    $bed1 = new Bed("Cuscino per cani", 30, "Cuccia per animali", "50x70");
+    $bed2 = new Bed("Casetta per gatti", 40, "Cuccia per animali", "70x90");
 
+    //Creo un array
     $products = [
         $product1, 
         $product2, 
@@ -43,11 +44,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <title>Negozio di animali</title>
 </head>
-<body>
+<body class="bg-primary">
     <div class="container py-5">
-        <h1 class="text-center">
+        <h1 class="text-center text-white">
             Il miglior cibo per il tuo amico!
         </h1>
+        <div class="row py-5">
+
+            <?php foreach ($products as $product) { ?>
+
+            <div class="col-6 mb-4">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><?php echo $product->getName(); ?></h5>
+                        <p class="card-text"><?php echo $product->getDescription(); ?></p>
+                        <p class="card-text"><?php echo "Prezzo: " . $product->getPrice(); ?></p>
+                        <p class="card-text"><?php echo "Categoria: " . $product->getCategory(); ?></p>
+
+                        <?php if ($product instanceof Food) { ?>
+                        <p class="card-text"><?php echo "Peso: " . $product->getWeight(); ?></p>
+                        <p class="card-text"><?php echo "Formato: " . $product->getFormat(); ?></p>
+                        <p class="card-text"><?php echo "Età: " . $product->getAge(); ?></p>
+                        <?php } ?>
+
+                        <?php if ($product instanceof Toy) { ?>
+                        <p class="card-text"><?php echo "Materiale del giocattolo: " . $product->getMaterial(); ?></p>
+                        <p class="card-text"><?php echo "Anni: " . $product->getYear(); ?></p>
+                        <?php } ?>
+
+                        <?php if ($product instanceof Bed) { ?>
+                        <p class="card-text"><?php echo "Dimensioni della cuccia: " . $product->getSize(); ?></p>
+                        <?php } ?>
+
+                    </div>
+                </div>
+            </div>
+
+            <?php } ?>
+
+        </div>
     </div>
 </body>
 </html>

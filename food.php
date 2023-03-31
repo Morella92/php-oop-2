@@ -10,5 +10,21 @@
             $this->food_format = $_food_format;
             $this->age = $_age;
         }
+
+        public function getWeight() {
+        return $this->weight;
+        }
+        
+        public function getFormat() {
+        return $this->food_format;
+        }
+        
+        public function getAge() {
+        return $this->age;
+        }
+        
+        public function getDescription() {
+        return parent::getDescription() . " Pesa " . $this->weight . " kg ed è " . $this->food_format . " ed è adatto per " . $this->age . ".";
+        }
     }
 ?>
