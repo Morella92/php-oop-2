@@ -15,6 +15,11 @@
         public function __construct($_name, $_price, $_category) {
             $this->name = $_name;
             $this->price = $_price;
+
+            if ($_price <= 0) {
+                throw new Exception("Il prezzo del prodotto non è valido.");
+            }
+
             $this->category = $_category;
         }
 
@@ -37,6 +42,13 @@
         public function getDiscountedPrice($discountPercent) {
             return $this->calculateDiscount($this->price, $discountPercent);
         }
+    }
+
+    // creo un prodotto con prezzo negativo
+    try {
+        $product = new Product("Prodotto 1", -10, "Categoria 1");
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
     
 ?>
