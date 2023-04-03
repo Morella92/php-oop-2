@@ -1,6 +1,12 @@
 <?php
 
+    include './discount.php';
+
     class Product {
+
+        //includo il trait
+        use DiscountTrait;
+
         public $name;
         public $description;
         public $price;
@@ -26,6 +32,10 @@
         
         public function getDescription() {
         return "Questo prodotto è " . $this->name . ", costa " . $this->price . " € e appartiene alla categoria " . $this->category . ".";
+        }
+
+        public function getDiscountedPrice($discountPercent) {
+            return $this->calculateDiscount($this->price, $discountPercent);
         }
     }
     
