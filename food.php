@@ -12,9 +12,12 @@
         }
 
         public function getWeight() {
-        return $this->weight;
+            if ($this->weight <= 0) {
+                throw new Exception("Il peso del cibo non è corretto.");
+            }
+            return $this->weight;
         }
-        
+
         public function getFormat() {
         return $this->food_format;
         }
@@ -26,5 +29,12 @@
         public function getDescription() {
         return parent::getDescription() . " Pesa " . $this->weight . " kg ed è " . $this->food_format . " ed è adatto per " . $this->age . ".";
         }
+    };
+
+    try {
+        $food = new Food("Crocchette", 2.5, "Cani", -1.5, "confezione", "adulti");
+        $food->getWeight();
+    } catch (Exception $e) {
+        echo "Errore: " . $e->getMessage();
     }
 ?>
